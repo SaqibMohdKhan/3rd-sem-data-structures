@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+int main()
+{
+    struct node *start = NULL;
+    struct node *ptr;
+    int n, value;
+
+    cout << "Enter number of nodes: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter data: ";
+        cin >> value;
+
+        struct node *newnode = new node;
+
+        newnode->data = value;
+        newnode->next = NULL;
+
+        if (start == NULL)
+        {
+            start = newnode;
+        }
+        else
+        {
+            ptr = start;
+
+            while (ptr->next != NULL)
+            {
+                ptr = ptr->next;
+            }
+
+            ptr->next = newnode;
+        }
+    }
+
+    cout << "Linked List is: ";
+
+    ptr = start;
+
+    while (ptr != NULL)
+    {
+        cout << ptr->data << " -> ";
+        ptr = ptr->next;
+    }
+
+    cout << "NULL" << endl;
+
+    // Free dynamically allocated memory
+    ptr = start;
+
+    while (ptr != NULL)
+    {
+        struct node *temp = ptr;
+        ptr = ptr->next;
+        delete temp;
+    }
+
+    return 0;
+}
+Singly linked list
