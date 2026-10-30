@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[100], n;
+
+    cout << "Enter size of array: ";
+    cin >> n;
+
+    if (n < 1 || n >= 100)
+    {
+        cout << "Invalid array size";
+        return 0;
+    }
+
+    cout << "Enter " << n << " elements: ";
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    cout << "You entered these values: ";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    int val, pos;
+
+    cout << "\nEnter new value: ";
+    cin >> val;
+
+    cout << "Enter position: ";
+    cin >> pos;
+
+    if (pos < 1 || pos > n + 1)
+    {
+        cout << "Invalid position";
+        return 0;
+    }
+
+    // Shift elements to the right
+    for (int i = n - 1; i >= pos - 1; i--)
+    {
+        arr[i + 1] = arr[i];
+    }
+
+    // Insert new value
+    arr[pos - 1] = val;
+
+    cout << "Elements after insertion: ";
+
+    for (int i = 0; i <= n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+Array insertion
